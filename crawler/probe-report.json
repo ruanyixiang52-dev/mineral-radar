@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Fabre Minerals",
+    "url": "https://www.fabreminerals.com",
+    "type": "dealer",
+    "ok": false,
+    "status": 403,
+    "ms": 1109,
+    "bytes": 5647,
+    "priceHits": 0,
+    "samplePrices": [],
+    "title": "Just a moment...",
+    "verdict": "需要进一步处理（登录/反爬/超时）"
+  },
+  {
+    "name": "The Arkenstone (iRocks)",
+    "url": "https://www.irocks.com",
+    "type": "dealer",
+    "ok": true,
+    "status": 200,
+    "ms": 2229,
+    "bytes": 112762,
+    "priceHits": 2,
+    "samplePrices": [
+      "$10",
+      "$250"
+    ],
+    "title": "The Arkenstone - www.iRocks.com Fine Minerals from Robert Lavinsky",
+    "verdict": "可直接抓取（页面含价格字段）"
+  },
+  {
+    "name": "Crystal Classics",
+    "url": "https://www.crystalclassics.co.uk",
+    "type": "dealer",
+    "ok": true,
+    "status": 200,
+    "ms": 2677,
+    "bytes": 259293,
+    "priceHits": 0,
+    "samplePrices": [],
+    "title": "Crystal Classics Fine Minerals\n &ndash; Crystal Classics UK",
+    "verdict": "可达，价格或需二级页/接口"
+  },
+  {
+    "name": "Marin Minerals",
+    "url": "https://www.marinminerals.com",
+    "type": "dealer",
+    "ok": false,
+    "status": 0,
+    "ms": 471,
+    "error": "TypeError: fetch failed",
+    "verdict": "不可达或被拦截"
+  },
+  {
+    "name": "Khyber Minerals",
+    "url": "https://www.khyberminerals.com",
+    "type": "dealer",
+    "ok": true,
+    "status": 200,
+    "ms": 2571,
+    "bytes": 168874,
+    "priceHits": 42,
+    "samplePrices": [
+      "$100",
+      "$100",
+      "$100",
+      "$100",
+      "$100"
+    ],
+    "title": "The Khyber Mineral Company-&nbsp; Mineral Specimens for Sale,  Rhodochrosite, Benitoite, Pyromorphite, Bolivian Minerals",
+    "verdict": "可直接抓取（页面含价格字段）"
+  },
+  {
+    "name": "Mindat",
+    "url": "https://www.mindat.org",
+    "type": "database",
+    "ok": false,
+    "status": 403,
+    "ms": 610,
+    "bytes": 5618,
+    "priceHits": 0,
+    "samplePrices": [],
+    "title": "Just a moment...",
+    "verdict": "需要进一步处理（登录/反爬/超时）"
+  },
+  {
+    "name": "Heritage Auctions",
+    "url": "https://historical.ha.com",
+    "type": "auction",
+    "ok": false,
+    "status": 403,
+    "ms": 764,
+    "bytes": 769,
+    "priceHits": 0,
+    "samplePrices": [],
+    "title": "ha.com",
+    "verdict": "需要进一步处理（登录/反爬/超时）"
+  },
+  {
+    "name": "MineralAuctions",
+    "url": "https://www.mineralauctions.com",
+    "type": "auction",
+    "ok": false,
+    "status": 403,
+    "ms": 1011,
+    "bytes": 5649,
+    "priceHits": 0,
+    "samplePrices": [],
+    "title": "Just a moment...",
+    "verdict": "需要进一步处理（登录/反爬/超时）"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "url": "https://www.fabreminerals.com/specimens.php",
+  "headless": true,
+  "profile_dir": "~/.cloakbrowser-profile",
+  "actions": [
+    {"type": "wait", "seconds": 8},
+    {"type": "evaluate", "name": "body", "script": "document.body.innerText.slice(0,600)"},
+    {"type": "evaluate", "name": "prices", "script": "(document.body.innerText.match(/[€$]\\s?\\d[\\d,.]*/g)||[]).slice(0,20)"},
+    {"type": "evaluate", "name": "links", "script": "Array.from(document.querySelectorAll('a[href]')).map(a=>a.href).filter(h=>h.includes('fabreminerals.com')).slice(0,30)"},
+    {"type": "screenshot", "path": "fabre3.png"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "url": "https://www.fabreminerals.com/",
+  "headless": true,
+  "profile_dir": "~/.cloakbrowser-profile",
+  "actions": [
+    {"type": "wait", "seconds": 3},
+    {"type": "evaluate", "name": "links", "script": "Array.from(document.querySelectorAll('a[href]')).map(a=>({href:a.href, text:(a.innerText||'').replace(/\\s+/g,' ').trim().slice(0,60)})).filter(x=>/specimen|mineral|stock|update|page/i.test(x.href)&&x.text).slice(0,40)"},
+    {"type": "screenshot", "path": "fabre2.png"}
+  ]
+}

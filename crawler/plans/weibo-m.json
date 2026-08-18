@@ -1,0 +1,11 @@
+{
+  "url": "https://m.weibo.cn/search?containerid=100103type%3D1%26q%3D%E7%9F%BF%E6%A0%87",
+  "headless": true,
+  "profile_dir": "~/.cloakbrowser-profile",
+  "actions": [
+    {"type": "wait", "seconds": 4},
+    {"type": "evaluate", "name": "items", "script": "Array.from(document.querySelectorAll('div[data-mid], .weibo-text, card')).slice(0,30).map(el=>({text:(el.innerText||'').replace(/\\s+/g,' ').slice(0,200), link:(el.closest('a')?.href||'')}))"},
+    {"type": "evaluate", "name": "body", "script": "document.body.innerText.slice(0,800)"},
+    {"type": "screenshot", "path": "weibom.png"}
+  ]
+}

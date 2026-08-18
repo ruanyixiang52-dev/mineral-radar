@@ -1,0 +1,15 @@
+node_modules/
+.next/
+dist/
+data/mineral.db*
+data/live/prices.json
+data/live/feed.json
+data/live/social-feed.json
+data/live/social.json
+data/live/meta.json
+data/live/live-bundle.json
+crawler/out/
+crawler/.rotate-idx
+public/data/
+*.log
+.DS_Store

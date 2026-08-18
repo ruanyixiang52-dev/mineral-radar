@@ -1,0 +1,10 @@
+{
+  "url": "https://www.fabreminerals.com/",
+  "headless": true,
+  "profile_dir": "~/.cloakbrowser-profile",
+  "actions": [
+    {"type": "wait", "seconds": 3},
+    {"type": "evaluate", "name": "items", "script": "Array.from(document.querySelectorAll('a,div,td,li')).map(el=>{const t=(el.innerText||'').replace(/\\s+/g,' ').trim();if(t.length>250||t.length<10)return null;const m=t.match(/[€$]\\s?\\d[\\d,.]*/);if(!m)return null;return{title:t.slice(0,140),price:m[0],link:(el.closest('a')?.href||el.querySelector('a')?.href||'')}}).filter(Boolean).slice(0,40)"},
+    {"type": "screenshot", "path": "fabre.png"}
+  ]
+}

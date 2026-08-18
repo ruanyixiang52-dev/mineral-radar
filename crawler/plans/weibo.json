@@ -1,0 +1,10 @@
+{
+  "url": "https://s.weibo.com/realtime?q=%E7%9F%BF%E6%A0%87&rd=realtime&tw=realtime&Refer=weibo_realtime",
+  "headless": true,
+  "profile_dir": "~/.cloakbrowser-profile",
+  "actions": [
+    {"type": "wait", "seconds": 3},
+    {"type": "evaluate", "name": "items", "script": "Array.from(document.querySelectorAll('div.card-wrap[mid]')).map(c=>({mid:c.getAttribute('mid'),author:(c.querySelector('a.name')?.innerText||c.querySelector('div.info a[nick-name]')?.getAttribute('nick-name')||'').trim(),text:(c.querySelector('p.txt[node-type=\"feed_list_content_full\"]')?.innerText||c.querySelector('p.txt[node-type=\"feed_list_content\"]')?.innerText||c.querySelector('p.txt')?.innerText||'').slice(0,300),link:c.querySelector('div.from a[href*=\"weibo.com\"]')?.href})).filter(x=>x.text||x.author).slice(0,30)"},
+    {"type": "screenshot", "path": "weibo.png"}
+  ]
+}

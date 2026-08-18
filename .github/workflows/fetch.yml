@@ -1,0 +1,59 @@
+name: fetch-data
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Fetch dealer prices
+        run: node crawler/fetch_live.mjs
+
+      - name: Fetch Bilibili hot content
+        run: node crawler/fetch_bilibili.mjs || true
+
+      - name: Sync history snapshots
+        run: node crawler/sync_db.mjs
+
+      - name: Make live bundle
+        run: node crawler/make_bundle.mjs
+
+      - name: Commit snapshots to main
+        run: |
+          git config user.name "mineral-radar-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/history/ data/manual/ 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "data: snapshot $(date -u +%FT%TZ)" && git push)
+
+      - name: Publish live bundle branch
+        run: |
+          git checkout --orphan live-tmp
+          git rm -rf --cached . -q
+          git add data/live/live-bundle.json
+          git commit -m "live bundle $(date -u +%FT%TZ)"
+          git push -f origin live-tmp:live
+          git checkout main
+
+      - name: Purge jsDelivr cache
+        run: |
+          sleep 3
+          curl -sf "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY_OWNER}/mineral-radar@live/live-bundle.json" >/dev/null && echo "CDN purged" || echo "purge skipped"
