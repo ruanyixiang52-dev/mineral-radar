@@ -51,7 +51,6 @@ jobs:
           git add -f data/live/live-bundle.json
           git commit -m "live bundle $(date -u +%FT%TZ)"
           git push -f origin live-tmp:live
-          git checkout main
 
       - name: Purge jsDelivr cache
         run: |
