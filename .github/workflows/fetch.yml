@@ -46,9 +46,10 @@ jobs:
 
       - name: Publish live bundle branch
         run: |
+          cp data/live/live-bundle.json ./live-bundle.json
           git checkout --orphan live-tmp
           git rm -rf --cached . -q
-          git add -f data/live/live-bundle.json
+          git add -f live-bundle.json
           git commit -m "live bundle $(date -u +%FT%TZ)"
           git push -f origin live-tmp:live
 
