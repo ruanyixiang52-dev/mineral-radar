@@ -53,7 +53,9 @@ jobs:
           git commit -m "live bundle $(date -u +%FT%TZ)"
           git push -f origin live-tmp:live
 
-      - name: Purge jsDelivr cache
+      - name: Purge jsDelivr cache (twice for propagation)
         run: |
           sleep 3
-          curl -sf "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY_OWNER}/mineral-radar@live/live-bundle.json" >/dev/null && echo "CDN purged" || echo "purge skipped"
+          curl -sf "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY_OWNER}/mineral-radar@live/live-bundle.json" >/dev/null && echo "CDN purged (1/2)" || echo "purge 1 skipped"
+          sleep 20
+          curl -sf "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY_OWNER}/mineral-radar@live/live-bundle.json" >/dev/null && echo "CDN purged (2/2)" || echo "purge 2 skipped"
